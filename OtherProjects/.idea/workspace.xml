@@ -10,21 +10,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "DannyP4"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DannyP4&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DannyP4/OOPLab_20225737_PhamDucLong.git",
-    "accountId": "914949e9-3a26-46dc-8172-d309dfb98b72"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DannyP4/OOPLab_20225737_PhamDucLong.git&quot;,
+    &quot;accountId&quot;: &quot;914949e9-3a26-46dc-8172-d309dfb98b72&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2pG6uQVT9LkkOJ0rC6WJlDlb5TE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,15 +32,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ConcatenationInLoops.executor": "Run",
+    "Application.GarbageCreator.executor": "Run",
+    "Application.NoGarbage.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "topic/memory-management-string",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/OOPLab_20225737_PhamDucLong",
+    "last_opened_file_path": "F:/OOPLab_20225737_PhamDucLong/OtherProjects/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\OOPLab_20225737_PhamDucLong\OtherProjects\src" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -58,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732380289293</updated>
       <workItem from="1732380290519" duration="9000" />
+      <workItem from="1732382525411" duration="265000" />
     </task>
     <servers />
   </component>
