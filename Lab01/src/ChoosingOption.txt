@@ -1,0 +1,8 @@
+1, Nếu users chọn "Cancel" thì kết quả nhận được sẽ tương tự khi users chọn "No"
+đó là "You've chosen: No"
+
+2, Để chỉnh option về còn lại hai lựa chọn "Yes" hoặc "No" ta thay câu lệnh
+int option = JOptionPane.showConfirmDialog(null, "Do you want to change to the first class ticket?"); thành
+int option = JOptionPane.showConfirmDialog(null, "Do you want to change the first class ticket?", null, JOptionPane.YES_NO_OPTION);
+
+Còn nếu muốn chỉnh option về hai lựa chọn như "I do" và "I don't" ta phải sử dụng phương thức JOptionPane.showOptionDialog() thay vì int option = JOptionPane.showConfirmDialog() như trong file ChoosingOption.java
