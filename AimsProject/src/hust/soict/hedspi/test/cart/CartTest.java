@@ -1,5 +1,6 @@
-package hust.soict.hedspi.aims.cart;
+package hust.soict.hedspi.test.cart;
 
+import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 
 import java.util.Scanner;
