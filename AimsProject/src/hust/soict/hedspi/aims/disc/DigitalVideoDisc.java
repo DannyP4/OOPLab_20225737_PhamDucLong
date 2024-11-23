@@ -102,4 +102,16 @@ public class DigitalVideoDisc {
     public static void setNbDigitalVideoDiscs(int nbDigitalVideoDiscs) {
         DigitalVideoDisc.nbDigitalVideoDiscs = nbDigitalVideoDiscs;
     }
+
+    @Override
+    public String toString() {
+        return "DigitalVideoDisc{" +
+                "title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", director='" + director + '\'' +
+                ", length=" + length +
+                ", cost=" + cost +
+                ", id=" + id +
+                '}';
+    }
 }
