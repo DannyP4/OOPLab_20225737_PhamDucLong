@@ -2,6 +2,8 @@ package hust.soict.hedspi.aims.cart;
 
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 
+import java.util.Scanner;
+
 public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
@@ -18,6 +20,18 @@ public class CartTest {
                 "Animation", 18.99f);
         cart.addDigitalVideoDisc(dvd3);
 
-        cart.printCart();
+        //cart.printCart();
+
+        System.out.println("Enter the title of DVD you want to search: ");
+//        Scanner sc = new Scanner(System.in);
+//        int idForSearch = sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        String titleForSearch = sc.nextLine();
+
+        if(cart.search(titleForSearch))
+            System.out.println("Found DVD with title " + titleForSearch + " and the id of this DVD is " + cart.getDiscId(titleForSearch));
+        else
+            System.out.println("Not found DVD with title " + titleForSearch);
+
     }
 }
