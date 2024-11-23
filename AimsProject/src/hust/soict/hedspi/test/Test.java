@@ -1,4 +1,4 @@
-package hust.soict.hedspi.aims.test;
+package hust.soict.hedspi.test;
 
 public class Test {
     public static void main(String[] args) {
