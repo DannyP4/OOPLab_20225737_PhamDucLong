@@ -86,4 +86,40 @@ public class Cart {
         System.out.println("Total cost: " + totalCost() + "$");
         System.out.println("**************************************************");
     }
+
+    public String getDiscTitle(int id) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getId() == id)
+                return itemsOrdered[i].getTitle();
+        }
+
+        return null;
+    }
+
+    public int getDiscId(String title) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getTitle().equals(title))
+                return itemsOrdered[i].getId();
+        }
+
+        return 0;
+    }
+
+    public boolean search(int id) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getId() == id)
+                return true;
+        }
+
+        return false;
+    }
+
+    public boolean search(String title) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getTitle().equals(title))
+                return true;
+        }
+
+        return false;
+    }
 }
