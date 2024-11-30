@@ -1,0 +1,82 @@
+10. Unique item in a list
+If the passing object is not an instance of Media, what happens?
+- Nếu đối tượng truyền vào không phải là một instance của Media thì sẽ không thực hiện được phép so sánh.
+Nhưng nếu đối tượng truyền là instance con của Media thì ta vẫn sẽ thực hiện được phép so sánh.
+Ví dụ được thực hiện ở lớp Aims:
+
+Media book1 = new Book(5, "Book1", "Horror", 4.5f);
+Media book2 = new Book(6, "Book1", "Scientific", 5.5f);
+
+if (book1.equals(book2)) System.out.println("Two objects are equal");
+else System.out.println("Two objects are not equal");
+
+=> Kết quả là "Two objects are equal"
+
+12. Sort media in the cart
+a. What class should implement the Comparable interface?
+- Lớp chứa đối tượng cần so sánh, chẳng hạn Media hoặc các lớp con của nó như DigitalVideoDisc, Book, CompactDisc.
+
+
+b. In those classes, how should you implement the compareTo() method be to reflect the ordering that we want?
+- Em đã triển khai phương thức compareTo() trong lớp Media:
+    @Override
+    public int compareTo(Media other) {
+        int titleComparison = this.title.compareTo(other.title);
+        if (titleComparison != 0) return titleComparison;
+
+
+        return Float.compare(other.cost, this.cost);
+    }
+
+
+c. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+- Không ta không thể, Comparable chỉ cho phép định nghĩa một quy tắc sắp xếp duy nhất thông qua phương thức compareTo().
+Nếu cần nhiều quy tắc thì khi đó ta phải sử dụng Comparator như đã triển khai trong MediaComparatorByCostTitle và MediaComparatorByTitleCost.
+
+
+d. Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing
+length, then cost. How would you modify your code to allow this?
+- Em ghi đè phương thức compareTo() trong lớp DigitalVideoDisc:
+    @Override
+    public int compareTo(Media other) {
+         if (!(other instanceof DigitalVideoDisc)) return super.compareTo(other);
+
+         DigitalVideoDisc otherDVD = (DigitalVideoDisc) other;
+
+         int titleComparison = this.getTitle().compareTo(other.getTitle());
+         if (titleComparison != 0) return titleComparison;
+
+         if (this.getLength() == otherDVD.getLength()) return Float.compare(otherDVD.getCost(), this.getCost());
+
+         return Integer.compare(otherDVD.getLength(), this.getLength());
+    }
+
+- Sau khi thử với:
+        ArrayList<DigitalVideoDisc> DVDList = new ArrayList<>();
+        DVDList.add(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        DVDList.add(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 25f));
+        DVDList.add(new DigitalVideoDisc("Aladdin", "Animation", "Roger Allers", 90, 12.0f));
+
+        System.out.println("Before sorting:");
+        for (DigitalVideoDisc dvd : DVDList) {
+            System.out.println(dvd.getTitle() + " " + dvd.getLength() + " " + dvd.getCost());
+        }
+
+        System.out.println("\nAfter sorting:");
+        Collections.sort(DVDList, COMPARE_BY_TITLE_COST);
+        for (DigitalVideoDisc dvd : DVDList) {
+            System.out.println(dvd.getTitle() + " " + dvd.getLength() + " " + dvd.getCost());
+        }
+
+- Kết quả nhận được là:
+Before sorting:
+The Lion King 87 19.95
+The Lion King 87 25.0
+Aladdin 90 12.0
+
+After sorting:
+Aladdin 90 12.0
+The Lion King 87 25.0
+The Lion King 87 19.95
+
+=> Đúng với yêu cầu là Title -> Length -> Cost
