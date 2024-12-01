@@ -13,6 +13,8 @@ public abstract class Media implements Comparable<Media> {
     private String category;
     private float cost;
 
+    public static int nbMedia = 1;
+
     public Media() {
 
     }

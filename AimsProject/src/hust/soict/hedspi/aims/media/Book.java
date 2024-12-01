@@ -19,9 +19,8 @@ public class Book extends Media {
         super(id, title, category, cost);
     }
 
-    public static int nbBook = 1;
     public Book(String title, String category, float cost) {
-        super(nbBook++, title, category, cost);
+        super(nbMedia++, title, category, cost);
     }
 
     public void addAuthor(String authorName) {

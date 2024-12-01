@@ -34,7 +34,8 @@ public class Track implements Playable {
     @Override
     public void play() {
         System.out.println("Playing track: " + getTitle());
-        System.out.println("Track length: " + getLength());
+        if (getLength() == 0) System.out.println("Track cannot be played.");
+        else System.out.println("Track length: " + getLength());
     }
 
     @Override

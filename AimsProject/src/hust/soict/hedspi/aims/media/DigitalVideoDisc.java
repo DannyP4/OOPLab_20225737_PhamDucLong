@@ -9,19 +9,19 @@ public class DigitalVideoDisc extends Disc implements Playable {
     private static int nbDigitalVideoDiscs = 1;
 
     public DigitalVideoDisc(String title) {
-        super(nbDigitalVideoDiscs++, title, null, 0, 0, null);
+        super(nbMedia++, title, null, 0, 0, null);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
-        super(nbDigitalVideoDiscs++, title, category, cost, 0, null);
+        super(nbMedia++, title, category, cost, 0, null);
     }
 
     public DigitalVideoDisc(String title, String category, String director, float cost) {
-        super(nbDigitalVideoDiscs++, title, category, cost, 0, director);
+        super(nbMedia++, title, category, cost, 0, director);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(nbDigitalVideoDiscs++, title, category, cost, length, director);
+        super(nbMedia++, title, category, cost, length, director);
     }
 
     public static int getNbDigitalVideoDiscs() {
@@ -46,7 +46,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
     @Override
     public void play() {
         System.out.println("Playing DVD: " + getTitle());
-        System.out.println("DVD length: " + getLength());
+
+        if (getLength() == 0) System.out.println("DVD cannot be played.");
+        else System.out.println("DVD length: " + getLength());
     }
 
     @Override

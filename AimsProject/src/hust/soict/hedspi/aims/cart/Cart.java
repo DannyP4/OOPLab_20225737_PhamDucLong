@@ -66,15 +66,13 @@ public class Cart {
         return null;
     }
 
-    public List<Media> searchById(int id) {
-        List<Media> media = new ArrayList<Media>();
-        for (Media item : itemsOrdered) {
-            if (item.getId() == id) {
-                media.add(item);
-            }
+    public Media searchById(int id) {
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id)
+                return media;
         }
 
-        return media;
+        return null;
     }
 
     public void sortByTitle() {
