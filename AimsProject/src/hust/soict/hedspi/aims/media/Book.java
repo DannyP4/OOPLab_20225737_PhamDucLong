@@ -47,7 +47,7 @@ public class Book extends Media {
                 " - title = '" + getTitle() + '\'' +
                 " - category = '" + getCategory() + '\'' +
                 " - cost = " + getCost() +
-                " - authors = " + authors;
+                " - (List of) authors = " + authors;
     }
 
     //    public static void main(String[] args) {

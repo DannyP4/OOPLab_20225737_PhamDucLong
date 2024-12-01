@@ -101,228 +101,244 @@ public class Aims {
 
     public static void storeMenu() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Options: ");
-        System.out.println("--------------------------------");
-        System.out.println("1. See a media’s details");
-        System.out.println("2. Add a media to cart");
-        System.out.println("3. Play a media");
-        System.out.println("4. See current cart");
-        System.out.println("0. Back");
-        System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3-4");
-        String option = scanner.nextLine();
-        switch (option) {
-            case "0":
-                clc();
-                showMenu();
-                break;
 
-            case "1":
-                while (true) {
-                    System.out.print("Enter the title of the media to view details (Press 0 to return): ");
-                    String title = scanner.nextLine();
-                    if (title.equals("0")) break;
-                    Media foundMedia = store.searchByTitle(title);
-                    if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
-                    else {
-                        System.out.println("Details: " + foundMedia.toString());
-                        mediaDetailsMenu(foundMedia);
+        boolean back = false;
+        while (!back) {
+            System.out.println("Options: ");
+            System.out.println("--------------------------------");
+            System.out.println("1. See a media’s details");
+            System.out.println("2. Add a media to cart");
+            System.out.println("3. Play a media");
+            System.out.println("4. See current cart");
+            System.out.println("0. Back");
+            System.out.println("--------------------------------");
+            System.out.println("Please choose a number: 0-1-2-3-4");
+            String option = scanner.nextLine();
+            switch (option) {
+                case "0":
+                    clc();
+                    back = true;
+                    break;
+
+                case "1":
+                    while (true) {
+                        System.out.print("Enter the title of the media to view details (Press 0 to return): ");
+                        String title = scanner.nextLine();
+                        if (title.equals("0")) break;
+                        Media foundMedia = store.searchByTitle(title);
+                        if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
+                        else {
+                            System.out.println("Details: " + foundMedia.toString());
+                            mediaDetailsMenu(foundMedia);
+                        }
                     }
-                }
 
-                break;
+                    break;
 
-            case "2":
-                while (true) {
-                    System.out.print("Enter the title of the media to add to cart (Press 0 to return): ");
-                    String title = scanner.nextLine();
-                    if (title.equals("0")) break;
-                    Media foundMedia = store.searchByTitle(title);
-                    if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
-                    else cart.addMedia(foundMedia);
-                }
-
-                break;
-
-            case "3":
-                while (true) {
-                    System.out.print("Enter the title of the media to play (Press 0 to return): ");
-                    String title = scanner.nextLine();
-                    if (title.equals("0")) break;
-                    Media foundMedia = store.searchByTitle(title);
-                    if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
-                    else {
-                        if (foundMedia instanceof CompactDisc) {
-                            CompactDisc mediaCD = (CompactDisc) foundMedia;
-                            clc();
-                            mediaCD.play();
-                        } else if (foundMedia instanceof DigitalVideoDisc) {
-                            DigitalVideoDisc mediaDVD = (DigitalVideoDisc) foundMedia;
-                            clc();
-                            mediaDVD.play();
-                        } else System.out.println(foundMedia.getTitle() + " cannot be played! Please try another.");
+                case "2":
+                    while (true) {
+                        System.out.print("Enter the title of the media to add to cart (Press 0 to return): ");
+                        String title = scanner.nextLine();
+                        if (title.equals("0")) break;
+                        Media foundMedia = store.searchByTitle(title);
+                        if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
+                        else cart.addMedia(foundMedia);
                     }
-                }
 
-                break;
+                    break;
 
-            case "4":
-                clc();
-                cart.printCart();
-                cartMenu();
-                break;
+                case "3":
+                    while (true) {
+                        System.out.print("Enter the title of the media to play (Press 0 to return): ");
+                        String title = scanner.nextLine();
+                        if (title.equals("0")) break;
+                        Media foundMedia = store.searchByTitle(title);
+                        if (foundMedia == null) System.out.println(title + " is not in the store. Please try another.");
+                        else {
+                            if (foundMedia instanceof CompactDisc) {
+                                CompactDisc mediaCD = (CompactDisc) foundMedia;
+                                clc();
+                                mediaCD.play();
+                            } else if (foundMedia instanceof DigitalVideoDisc) {
+                                DigitalVideoDisc mediaDVD = (DigitalVideoDisc) foundMedia;
+                                clc();
+                                mediaDVD.play();
+                            } else System.out.println(foundMedia.getTitle() + " cannot be played! Please try another.");
+                        }
+                    }
+
+                    break;
+
+                case "4":
+                    clc();
+                    cart.printCart();
+                    cartMenu();
+                    break;
+
+                default:
+                    clc();
+                    System.out.println("Invalid option. Please choose a number: 0-1-2-3-4.");
+                    break;
+            }
         }
     }
 
     public static void mediaDetailsMenu(Media media) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Options: ");
-        System.out.println("--------------------------------");
-        System.out.println("1. Add to cart");
-        System.out.println("2. Play");
-        System.out.println("0. Back");
-        System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2");
-        String option = scanner.nextLine();
-        switch (option) {
-            case "0":
-                clc();
-                storeMenu();
-                break;
 
-            case "1":
-                cart.addMedia(media);
-                break;
-
-            case "2":
-                if (media instanceof CompactDisc) {
-                    CompactDisc mediaCD = (CompactDisc) media;
+        boolean back = false;
+        while (!back) {
+            System.out.println("Options: ");
+            System.out.println("--------------------------------");
+            System.out.println("1. Add to cart");
+            System.out.println("2. Play");
+            System.out.println("0. Back");
+            System.out.println("--------------------------------");
+            System.out.println("Please choose a number: 0-1-2");
+            String option = scanner.nextLine();
+            switch (option) {
+                case "0":
                     clc();
-                    mediaCD.play();
-                } else if (media instanceof DigitalVideoDisc) {
-                    DigitalVideoDisc mediaDVD = (DigitalVideoDisc) media;
-                    clc();
-                    mediaDVD.play();
-                } else System.out.println(media.getTitle() + " cannot be played! Please try another.");
+                    back = true;
+                    break;
 
-                break;
-            default:
-                clc();
-                System.out.println("Invalid option");
-                break;
+                case "1":
+                    cart.addMedia(media);
+                    break;
+
+                case "2":
+                    if (media instanceof CompactDisc) {
+                        CompactDisc mediaCD = (CompactDisc) media;
+                        clc();
+                        mediaCD.play();
+                    } else if (media instanceof DigitalVideoDisc) {
+                        DigitalVideoDisc mediaDVD = (DigitalVideoDisc) media;
+                        clc();
+                        mediaDVD.play();
+                    } else System.out.println(media.getTitle() + " cannot be played! Please try another.");
+
+                    break;
+                default:
+                    clc();
+                    System.out.println("Invalid option");
+                    break;
+            }
         }
     }
 
     public static void cartMenu() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Options: ");
-        System.out.println("--------------------------------");
-        System.out.println("1. Filter medias in cart");
-        System.out.println("2. Sort medias in cart");
-        System.out.println("3. Remove media from cart");
-        System.out.println("4. Play a media");
-        System.out.println("5. Place order");
-        System.out.println("0. Back");
-        System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2-3-4-5");
-        String option = scanner.nextLine();
-        switch (option) {
-            case "0":
-                clc();
-                showMenu();
-                break;
 
-            case "1":
-                System.out.println("Filter by:\n(1) Title\n(2) Id\n");
-                int filterOption = scanner.nextInt();
-                scanner.nextLine();
-                while (true) {
-                    Media foundMedia = null;
-                    List<Media> foundMediaList = new ArrayList<>();
-                    if (filterOption == 1) {
-                        System.out.print("Enter the title of the media to filter (press 0 to stop): ");
-                        String title = scanner.nextLine();
-                        if (title.equals("0")) break;
-                        foundMedia = cart.searchByTitle(title);
-                    }
-                    else if (filterOption == 2) {
-                        System.out.print("Enter the ID of the media to filter (press 0 to stop): ");
-                        int id = scanner.nextInt();
-                        if (id == 0) break;
-                        foundMediaList = cart.searchById(id);
-                        foundMedia = foundMediaList.get(0);
-                    } else {
-                        clc();
-                        System.out.println("Invalid Input.");
-                    }
+        boolean back = false;
+        while (!back) {
+            System.out.println("Options: ");
+            System.out.println("--------------------------------");
+            System.out.println("1. Filter medias in cart");
+            System.out.println("2. Sort medias in cart");
+            System.out.println("3. Remove media from cart");
+            System.out.println("4. Play a media");
+            System.out.println("5. Place order");
+            System.out.println("0. Back");
+            System.out.println("--------------------------------");
+            System.out.println("Please choose a number: 0-1-2-3-4-5");
+            String option = scanner.nextLine();
+            switch (option) {
+                case "0":
+                    clc();
+                    back = true;
+                    break;
 
-                    if (foundMedia == null) {
-                        clc();
-                        System.out.println("There is no matched items in your cart.");
-                    } else {
-                        clc();
-                        if (filterOption == 1) System.out.println("Result: " + foundMedia.toString());
-                        else if (filterOption == 2) {
-                            System.out.println("Result: \n");
-                            for (Media m : foundMediaList) System.out.println(m.toString());
+                case "1":
+                    System.out.println("Filter by:\n(1) Title\n(2) Id\n");
+                    int filterOption = scanner.nextInt();
+                    scanner.nextLine();
+                    while (true) {
+                        Media foundMedia = null;
+                        List<Media> foundMediaList = new ArrayList<>();
+                        if (filterOption == 1) {
+                            System.out.print("Enter the title of the media to filter (press 0 to stop): ");
+                            String title = scanner.nextLine();
+                            if (title.equals("0")) break;
+                            foundMedia = cart.searchByTitle(title);
+                        } else if (filterOption == 2) {
+                            System.out.print("Enter the ID of the media to filter (press 0 to stop): ");
+                            int id = scanner.nextInt();
+                            if (id == 0) break;
+                            foundMediaList = cart.searchById(id);
+                            foundMedia = foundMediaList.get(0);
+                        } else {
+                            clc();
+                            System.out.println("Invalid Input.");
+                        }
+
+                        if (foundMedia == null) {
+                            clc();
+                            System.out.println("There is no matched items in your cart.");
+                        } else {
+                            clc();
+                            if (filterOption == 1) System.out.println("Result: " + foundMedia.toString());
+                            else if (filterOption == 2) {
+                                System.out.println("Result: \n");
+                                for (Media m : foundMediaList) System.out.println(m.toString());
+                            }
                         }
                     }
-                }
-                break;
+                    break;
 
-            case "2":
-                System.out.println("Sort medias in cart by:\n (1) title \n (2) cost");
-                int sortOption = scanner.nextInt();
-                scanner.nextLine();
-                if (sortOption == 1) cart.sortByTitle();
-                else if (sortOption == 2) cart.sortByCost();
-                else System.out.println("Invalid option.");
-                break;
+                case "2":
+                    System.out.println("Sort medias in cart by:\n (1) title \n (2) cost");
+                    int sortOption = scanner.nextInt();
+                    scanner.nextLine();
+                    if (sortOption == 1) cart.sortByTitle();
+                    else if (sortOption == 2) cart.sortByCost();
+                    else System.out.println("Invalid option.");
+                    break;
 
-            case "3":
-                while (true) {
-                    System.out.print("Enter the title of the media to remove from cart (Press 0 to return): ");
-                    String title = scanner.nextLine();
-                    if (title.equals("0")) break;
-                    Media foundMedia = cart.searchByTitle(title);
-                    if (foundMedia == null) System.out.println(title + " is not in the cart. Please try another.");
-                    else {
-                        cart.removeMedia(foundMedia);
-                        System.out.println(title + " has been successfully removed from the cart.");
+                case "3":
+                    while (true) {
+                        System.out.print("Enter the title of the media to remove from cart (Press 0 to return): ");
+                        String title = scanner.nextLine();
+                        if (title.equals("0")) break;
+                        Media foundMedia = cart.searchByTitle(title);
+                        if (foundMedia == null) System.out.println(title + " is not in the cart. Please try another.");
+                        else {
+                            cart.removeMedia(foundMedia);
+                            System.out.println(title + " has been successfully removed from the cart.");
+                        }
                     }
-                }
-                break;
+                    break;
 
-            case "4":
-                while (true) {
-                    System.out.print("Enter the title of the media to play (Press 0 to return): ");
-                    String title = scanner.nextLine();
-                    if (title.equals("0")) break;
-                    Media foundMedia = cart.searchByTitle(title);
-                    if (foundMedia == null) System.out.println(title + " is not in the cart. Please try another.");
-                    else {
-                        if (foundMedia instanceof CompactDisc) {
-                            CompactDisc mediaCD = (CompactDisc) foundMedia;
-                            clc();
-                            mediaCD.play();
-                        } else if (foundMedia instanceof DigitalVideoDisc) {
-                            DigitalVideoDisc mediaDVD = (DigitalVideoDisc) foundMedia;
-                            clc();
-                            mediaDVD.play();
-                        } else System.out.println(foundMedia.getTitle() + " cannot be played! Please try another.");
+                case "4":
+                    while (true) {
+                        System.out.print("Enter the title of the media to play (Press 0 to return): ");
+                        String title = scanner.nextLine();
+                        if (title.equals("0")) break;
+                        Media foundMedia = cart.searchByTitle(title);
+                        if (foundMedia == null) System.out.println(title + " is not in the cart. Please try another.");
+                        else {
+                            if (foundMedia instanceof CompactDisc) {
+                                CompactDisc mediaCD = (CompactDisc) foundMedia;
+                                clc();
+                                mediaCD.play();
+                            } else if (foundMedia instanceof DigitalVideoDisc) {
+                                DigitalVideoDisc mediaDVD = (DigitalVideoDisc) foundMedia;
+                                clc();
+                                mediaDVD.play();
+                            } else System.out.println(foundMedia.getTitle() + " cannot be played! Please try another.");
+                        }
                     }
-                }
-                break;
+                    break;
 
-            case "5":
-                clc();
-                System.out.println("The order has successfully created.\nYour cart is now empty.");
-                cart.empty();
-                break;
+                case "5":
+                    clc();
+                    System.out.println("The order has successfully created.\nYour cart is now empty.");
+                    cart.empty();
+                    break;
 
-            default:
-                System.out.println("Invalid option. Please choose a number: 0-1-2-3-4-5.");
-                break;
+                default:
+                    System.out.println("Invalid option. Please choose a number: 0-1-2-3-4-5.");
+                    break;
+            }
         }
     }
 
