@@ -1,3 +1,13 @@
+9. Constructors of whole classes and parent classes
+Which classes are aggregates of other classes? Checking all constructors of whole classes if they
+initialize for their parts?
+- Cart và Store chứa danh sách các đối tượng Media thông qua ArrayList<Media> itemsOrdered, do đó
+đây là 2 lớp Tổng hợp.Chúng chứa và quản lý các đối tượng Media trong danh sách.
+Nếu Cart hoặc Store bị hủy, danh sách Media mà chúng chứa cũng sẽ không còn ý nghĩa.
+- Cart và Store đã khởi tạo các thành phần của chúng (ArrayList<Media>) một cách rõ ràng tại điểm khai báo.
+Điều này đảm bảo constructor không cần thực hiện thêm thao tác khởi tạo nào.
+
+
 10. Unique item in a list
 If the passing object is not an instance of Media, what happens?
 - Nếu đối tượng truyền vào không phải là một instance của Media thì sẽ không thực hiện được phép so sánh.
@@ -11,6 +21,14 @@ if (book1.equals(book2)) System.out.println("Two objects are equal");
 else System.out.println("Two objects are not equal");
 
 => Kết quả là "Two objects are equal"
+
+11. Polymorphism with toString() method
+Iterate through the list and print out the information of the media by using toString() method. Observe
+what happens and explain in detail.
+- Mặc dù trong class Media cũng đã có phương thức toString() nhằm hiển thị ra các thuộc tính và giá trị của các thuộc tính,
+nhưng toString() cũng được override để hiển thị chi tiết các thuộc tính hơn trong các lớp CD, DVD và Book.
+Do đó java sẽ sử dụng toString() trong các lớp này.
+
 
 12. Sort media in the cart
 a. What class should implement the Comparable interface?
