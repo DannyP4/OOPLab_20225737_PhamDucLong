@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -45,10 +47,13 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     @Override
     public void play() {
-        System.out.println("Playing DVD: " + getTitle());
+        String message;
+        if (getLength() == 0)
+            message = "DVD cannot be played.";
+        else
+            message = "Playing DVD: " + getTitle() + "\nDVD length: " + getLength();
 
-        if (getLength() == 0) System.out.println("DVD cannot be played.");
-        else System.out.println("DVD length: " + getLength());
+        JOptionPane.showMessageDialog(null, message, "Playing DVD", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override

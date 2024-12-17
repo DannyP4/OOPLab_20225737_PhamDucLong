@@ -2,6 +2,7 @@ package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.screen.StoreScreen;
 import hust.soict.hedspi.aims.store.Store;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ public class Aims {
 
     public static void main(String[] args) {
         storeSetup();
-        clc();
-        showMenu();
+//        clc();
+//        showMenu();
+        new StoreScreen(store, cart);
     }
 
     public static void storeSetup(){

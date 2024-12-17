@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
@@ -56,15 +57,22 @@ public class CompactDisc extends Disc implements Playable {
 
     @Override
     public void play() {
-        System.out.println("Playing CompactDisc: " + this.getTitle());
+        StringBuilder messageBuilder = new StringBuilder();
 
-        if (getLength() == 0) System.out.println("CD cannot be played!");
+        if (getLength() == 0) messageBuilder.append("CD cannot be played!");
         else {
-            System.out.println("CD length: " + getLength());
-            System.out.println("Artist: " + this.getArtist());
+            messageBuilder.append("Playing CompactDisc: ").append(this.getTitle()).append("\n");
+            messageBuilder.append("CD length: ").append(getLength()).append("\n");
+            messageBuilder.append("Artist: ").append(this.getArtist()).append("\n");
+            messageBuilder.append("Tracks:\n");
 
-            for (Track track : tracks) track.play();
+            for (Track track : tracks) {
+                messageBuilder.append(" - ").append(track.getTitle()).append(": ").append(track.getLength()).append(" sec\n");
+            }
         }
+
+        String message = messageBuilder.toString();
+        JOptionPane.showMessageDialog(null, message, "Playing CD", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
