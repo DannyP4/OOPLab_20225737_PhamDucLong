@@ -15,9 +15,9 @@ public class Aims {
 
     public static void main(String[] args) {
         storeSetup();
-//        clc();
-//        showMenu();
-        new StoreScreen(store, cart);
+        clc();
+        showMenu();
+//        new StoreScreen(store, cart);
     }
 
     public static void storeSetup(){

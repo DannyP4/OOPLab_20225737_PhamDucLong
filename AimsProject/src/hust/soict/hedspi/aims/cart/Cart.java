@@ -1,15 +1,14 @@
 package hust.soict.hedspi.aims.cart;
 
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public void addMedia(Media media) {
         if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
@@ -102,5 +101,9 @@ public class Cart {
 
     public void empty() {
         itemsOrdered.clear();
+    }
+
+    public List<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 }
