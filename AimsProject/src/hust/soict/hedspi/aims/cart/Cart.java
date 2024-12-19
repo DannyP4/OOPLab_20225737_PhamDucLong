@@ -103,7 +103,7 @@ public class Cart {
         itemsOrdered.clear();
     }
 
-    public List<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 }
