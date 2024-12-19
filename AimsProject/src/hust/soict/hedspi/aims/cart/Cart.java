@@ -4,6 +4,8 @@ import hust.soict.hedspi.aims.media.Media;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.swing.*;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Cart {
@@ -105,5 +107,17 @@ public class Cart {
 
     public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
+    }
+
+    public void placeOrder() {
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        if (itemsOrdered.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Cart is empty");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(null, "Order placed successfully, total cost: " + df.format(totalCost()) + " $");
+        empty();
     }
 }

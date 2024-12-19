@@ -51,7 +51,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
         if (getLength() == 0)
             message = "DVD cannot be played.";
         else
-            message = "Playing DVD: " + getTitle() + "\nDVD length: " + getLength();
+            message = "Playing DVD: " + getTitle() + "\nDVD length: " + getLength() + " minutes";
 
         JOptionPane.showMessageDialog(null, message, "Playing DVD", JOptionPane.INFORMATION_MESSAGE);
     }

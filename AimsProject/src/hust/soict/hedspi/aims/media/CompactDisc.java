@@ -62,7 +62,7 @@ public class CompactDisc extends Disc implements Playable {
         if (getLength() == 0) messageBuilder.append("CD cannot be played!");
         else {
             messageBuilder.append("Playing CompactDisc: ").append(this.getTitle()).append("\n");
-            messageBuilder.append("CD length: ").append(getLength()).append("\n");
+            messageBuilder.append("CD length: ").append(getLength()).append(" sec\n");
             messageBuilder.append("Artist: ").append(this.getArtist()).append("\n");
             messageBuilder.append("Tracks:\n");
 
