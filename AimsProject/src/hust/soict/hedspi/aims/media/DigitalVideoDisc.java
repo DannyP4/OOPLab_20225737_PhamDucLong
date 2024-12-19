@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -46,10 +48,10 @@ public class DigitalVideoDisc extends Disc implements Playable {
     }
 
     @Override
-    public void play() {
+    public void play() throws PlayerException {
         String message;
-        if (getLength() == 0)
-            message = "DVD cannot be played.";
+        if (getLength() <= 0)
+            throw new PlayerException("ERROR: DVD length is non-positive!");
         else
             message = "Playing DVD: " + getTitle() + "\nDVD length: " + getLength() + " minutes";
 

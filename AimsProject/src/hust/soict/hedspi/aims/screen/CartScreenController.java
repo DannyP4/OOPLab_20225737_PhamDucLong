@@ -1,7 +1,9 @@
 package hust.soict.hedspi.aims.screen;
 
 import com.sun.javafx.stage.EmbeddedWindow;
+import hust.soict.hedspi.aims.Aims;
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.store.Store;
@@ -142,15 +144,76 @@ public class CartScreenController {
     @FXML
     void btnPlayMedia(ActionEvent event) {
         Playable media = (Playable) tblMedia.getSelectionModel().getSelectedItem();
-        media.play();
+        try {
+            media.play();
+        } catch (PlayerException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void viewStore(ActionEvent event) {
+        Aims.closeCartScreen();
+        Aims.openStoreScreen();
     }
 
     @FXML
     void viewCart(ActionEvent event) {
         JOptionPane.showMessageDialog(null, "You are already in the cart screen!");
+        cart.printCart();
+    }
+
+    @FXML
+    void AddBook(ActionEvent event) {
+        Object[] options = {"Go to store screen", "Stay here"};
+        int choice = JOptionPane.showOptionDialog(null,
+                "Please go to the store screen to add a book!",
+                "Add Book",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+
+        if (choice == JOptionPane.YES_OPTION) {
+            Aims.closeCartScreen();
+            Aims.openStoreScreen();
+        }
+    }
+
+    @FXML
+    void AddCD(ActionEvent event) {
+        Object[] options = {"Go to store screen", "Stay here"};
+        int choice = JOptionPane.showOptionDialog(null,
+                "Please go to the store screen to add a CD!",
+                "Add Book",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+
+        if (choice == JOptionPane.YES_OPTION) {
+            Aims.closeCartScreen();
+            Aims.openStoreScreen();
+        }
+    }
+
+    @FXML
+    void AddDVD(ActionEvent event) {
+        Object[] options = {"Go to store screen", "Stay here"};
+        int choice = JOptionPane.showOptionDialog(null,
+                "Please go to the store screen to add a DVD!",
+                "Add Book",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+
+        if (choice == JOptionPane.YES_OPTION) {
+            Aims.closeCartScreen();
+            Aims.openStoreScreen();
+        }
     }
 }

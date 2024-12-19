@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -37,7 +38,11 @@ public class MediaStore extends JPanel {
         if (media instanceof Playable) {
             JButton play = new JButton("Play");
             play.addActionListener(e -> {
-                ((Playable) media).play();
+                try {
+                    ((Playable) media).play();
+                } catch (PlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
             });
             container.add(play);
         }
