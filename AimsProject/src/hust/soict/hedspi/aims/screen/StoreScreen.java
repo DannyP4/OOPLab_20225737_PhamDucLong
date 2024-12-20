@@ -8,6 +8,7 @@ import hust.soict.hedspi.aims.store.Store;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StoreScreen extends JFrame {
     private Store store;
@@ -57,9 +58,40 @@ public class StoreScreen extends JFrame {
             Aims.openCartScreen();
         });
 
+        JMenuItem removeMedia = new JMenuItem("Remove Media");
+        menu.add(removeMedia);
+        removeMedia.addActionListener(e -> {
+            new RemoveMediaFromStoreScreen();
+        });
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
         menuBar.add(menu);
+
+        menuBar.add(Box.createHorizontalGlue());
+        menuBar.add(Box.createHorizontalStrut(250));
+
+        JLabel searchLabel = new JLabel("Search by Title: ");
+        JTextField searchField = new JTextField(20);
+        searchField.setMaximumSize(new Dimension(200, 30));
+        searchField.addActionListener(e -> {
+            String title = searchField.getText();
+            title = title.toLowerCase();
+            List<Media> result = store.searchByTitleLowerCase(title);
+            if (result == null) {
+                JOptionPane.showMessageDialog(null, "Media not found!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                String message = "Media found: \n";
+                for (Media media : result) {
+                    message += media.toString() + "\n";
+                }
+                JOptionPane.showMessageDialog(null, message);
+            }
+        });
+
+        menuBar.add(searchLabel);
+        menuBar.add(searchField);
 
         return menuBar;
     }

@@ -62,6 +62,18 @@ public class CartScreenController {
     @FXML
     private Label total;
 
+    @FXML
+    private RadioButton radioBtnSortByCost;
+
+    @FXML
+    private RadioButton radioBtnSortByTitle;
+
+    @FXML
+    private RadioButton radioBtnSortNone;
+
+    @FXML
+    private ToggleGroup sortCategory;
+
     public CartScreenController(Cart cart) {
         super();
         this.cart = cart;
@@ -97,6 +109,17 @@ public class CartScreenController {
                     @Override
                     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                         showFilteredMedia(newValue);
+                    }
+                });
+
+                sortCategory.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                        if (radioBtnSortByCost.isSelected()) {
+                            cart.sortByCost();
+                        } else if (radioBtnSortByTitle.isSelected()) {
+                            cart.sortByTitle();
+                        }
                     }
                 });
     }

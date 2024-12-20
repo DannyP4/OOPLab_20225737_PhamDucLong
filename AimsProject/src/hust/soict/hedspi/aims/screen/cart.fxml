@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
@@ -23,13 +35,13 @@
                             <items>
                                 <Menu mnemonicParsing="false" text="Update Store">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" text="Add Book" onAction="#AddBook"/>
-                                        <MenuItem mnemonicParsing="false" text="Add CD" onAction="#AddCD"/>
-                                        <MenuItem mnemonicParsing="false" text="Add DVD" onAction="#AddDVD"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#AddBook" text="Add Book" />
+                                        <MenuItem mnemonicParsing="false" onAction="#AddCD" text="Add CD" />
+                                        <MenuItem mnemonicParsing="false" onAction="#AddDVD" text="Add DVD" />
                                     </items>
                                 </Menu>
-                                <MenuItem mnemonicParsing="false" text="View Store" onAction="#viewStore"/>
-                                <MenuItem mnemonicParsing="false" text="View Cart"  onAction="#viewCart"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewStore" text="View Store" />
+                                <MenuItem mnemonicParsing="false" onAction="#viewCart" text="View Cart" />
                             </items>
                         </Menu>
                     </menus>
@@ -49,8 +61,8 @@
                     </padding>
                     <children>
                         <Label text="Filter: " />
-                        <TextField fx:id="tfFilter"/>
-                        <RadioButton mnemonicParsing="false" selected="true" text="By ID" fx:id="radioBtnFilterId">
+                        <TextField fx:id="tfFilter" />
+                        <RadioButton fx:id="radioBtnFilterId" mnemonicParsing="false" selected="true" text="By ID">
                             <toggleGroup>
                                 <ToggleGroup fx:id="filterCategory" />
                             </toggleGroup>
@@ -58,11 +70,29 @@
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </RadioButton>
-                        <RadioButton layoutX="202.0" layoutY="24.0" mnemonicParsing="false" text="By Title" toggleGroup="$filterCategory" fx:id="radioBtnFilterTitle">
+                        <RadioButton fx:id="radioBtnFilterTitle" layoutX="202.0" layoutY="24.0" mnemonicParsing="false" text="By Title" toggleGroup="$filterCategory">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </RadioButton>
+                  <Label layoutX="10.0" layoutY="24.0" text="Sort:">
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+                  <RadioButton fx:id="radioBtnSortByTitle" layoutX="261.0" layoutY="24.0" mnemonicParsing="false" text="By Title">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sortCategory" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnSortByCost" layoutX="434.0" layoutY="24.0" mnemonicParsing="false" text="By Cost" toggleGroup="$sortCategory">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </RadioButton>
                     </children>
                 </HBox>
                 <TableView fx:id="tblMedia">
@@ -77,7 +107,7 @@
                 </TableView>
                 <ButtonBar prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                        <Button fx:id="btnPlay" mnemonicParsing="false" text="Play" onAction="#btnPlayMedia"/>
+                        <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayMedia" text="Play" />
                         <Button fx:id="btnRemove" layoutX="959.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
                     </buttons>
                     <padding>
@@ -97,14 +127,14 @@
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" lineSpacing="10.0" text="" textFill="AQUA" fx:id="total">
+                        <Label fx:id="total" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" text="" textFill="AQUA">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </HBox>
-                <Button mnemonicParsing="false" style="-fx-background-color: red;" text="Place Order" textFill="WHITE" onAction="#btnPlaceOrder">
+                <Button mnemonicParsing="false" onAction="#btnPlaceOrder" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>

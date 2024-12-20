@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
@@ -55,6 +56,21 @@ public class Store {
         }
 
         return null;
+    }
+
+    public List<Media> searchByTitleLowerCase(String title) {
+        List<Media> result = new ArrayList<Media>();
+        for (Media media : itemsInStore) {
+            if (media.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                result.add(media);
+            }
+        }
+
+        if (result.size() == 0) {
+            return null;
+        }
+
+        return result;
     }
 
     public ArrayList<Media> getItemsInStore() {
